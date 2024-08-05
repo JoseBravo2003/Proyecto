@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Proyecto.Models.Comida>
+
+@{
+    ViewData["Title"] = "Comidas";
+}
+
+<h1>Comidas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Agregar Nueva Comida</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comida in Model)
+        {
+            <tr>
+                <td>@comida.Nombre</td>
+                <td>@comida.Descripcion</td>
+                <td>@comida.Precio.ToString("C")</td>
+                <td>@comida.Categoria</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@comida.IdComida" class="btn btn-info">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@comida.IdComida" class="btn btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@comida.IdComida" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
